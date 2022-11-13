@@ -2,6 +2,7 @@ import React, { useCallback, useContext } from 'react';
 import PropTypes from 'prop-types';
 
 import { useManageFocus } from '../src/use_manage_focus';
+import { useNewRecord } from '../src/use_new_record';
 
 import { Context } from './store';
 import { removeTodo, updateTodo } from './actions';
@@ -10,6 +11,7 @@ export function Todo({ id }) {
   const { dispatch, todos } = useContext(Context);
   const { title } = todos.find((t) => t.id === id);
   const ref = useManageFocus();
+  const newRecord = useNewRecord();
 
   const handleRemove = useCallback(() => {
     dispatch(removeTodo(id));
@@ -24,7 +26,7 @@ export function Todo({ id }) {
       <label htmlFor={`title_${id}`}>
         {`Item ${id}`}
         <input
-          autoFocus // eslint-disable-line jsx-a11y/no-autofocus
+          autoFocus={newRecord} // eslint-disable-line jsx-a11y/no-autofocus
           id={`title_${id}`}
           type="text"
           value={title}

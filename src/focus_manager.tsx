@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React, { useMemo, useState } from 'react';
 import PropTypes from 'prop-types';
 
 import { Context } from './context.js';
+import { useFirstRender } from './use_first_render.js';
 
 interface Props {
   children: React.ReactNode
@@ -9,9 +10,15 @@ interface Props {
 
 export function FocusManager({ children }: Props) {
   const [elements] = useState(() => new Set<Element>());
+  const firstRenderRef = useFirstRender();
+
+  const value = useMemo(() => ({
+    elements,
+    firstRenderRef,
+  }), [elements, firstRenderRef]);
 
   return (
-    <Context.Provider value={elements}>
+    <Context.Provider value={value}>
       {children}
     </Context.Provider>
   );

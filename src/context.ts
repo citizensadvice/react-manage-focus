@@ -1,3 +1,11 @@
 import { createContext } from 'react';
 
-export const Context = createContext<Set<Element>>(new Set());
+interface IContextValue {
+  elements: Set<Element>,
+  firstRenderRef: React.RefObject<boolean>,
+}
+
+export const Context = createContext<IContextValue>({
+  elements: new Set(),
+  firstRenderRef: { current: true },
+});

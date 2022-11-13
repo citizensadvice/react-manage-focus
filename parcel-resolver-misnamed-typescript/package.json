@@ -1,0 +1,13 @@
+{
+  "name": "parcel-resolver-misnamed-typescript",
+  "description": "Resolve deliberately misnamed imports in typescript files",
+  "version": "1.0.0",
+  "private": true,
+  "main": "index.js",
+  "dependencies": {
+    "@parcel/plugin": "^2"
+  },
+  "engines": {
+    "parcel": "2.x"
+  }
+}

@@ -6,7 +6,7 @@ import { reducer } from './reducer';
 export const Context = createContext();
 
 export function Store({ children }) {
-  const [state, dispatch] = useReducer(reducer, { todos: [] });
+  const [state, dispatch] = useReducer(reducer, { todos: [{ id: 1, title: 'Initial todo' }] });
 
   const value = useMemo(() => ({
     dispatch,

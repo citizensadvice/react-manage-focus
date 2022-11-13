@@ -14,6 +14,7 @@
     "clean": "rm -rf dist",
     "build": "npm run clean && tsc --declaration --sourceMap --declarationMap --noEmitOnError",
     "build:swc": "npm run clean && swc src --ignore **/*.test.{jsx,js} -d ./dist --source-maps true",
+    "postbuild": "node dist/index.js",
     "preversion": "npm run lint",
     "prepublishOnly": "npm run build"
   },
@@ -39,6 +40,7 @@
     "jest": "^29.2.2",
     "jest-environment-jsdom": "^29.2.2",
     "parcel": "^2.8.0",
+    "parcel-resolver-misnamed-typescript": "file:./parcel-resolver-misnamed-typescript",
     "process": "^0.11.10",
     "prop-types": "^15.8.1",
     "react": "^18.2.0",
@@ -107,5 +109,8 @@
   },
   "publishConfig": {
     "access": "public"
+  },
+  "aliases": {
+    "*.js": "*"
   }
 }

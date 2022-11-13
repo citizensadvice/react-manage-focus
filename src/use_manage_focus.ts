@@ -4,7 +4,7 @@ import { Context } from './context.js';
 import { refocus } from './refocus.js';
 
 export function useManageFocus() {
-  const elements = useContext(Context);
+  const { elements } = useContext(Context);
   const lastAddedRef = useRef<Element>();
 
   const ref = useCallback((node: Element) => {
