@@ -1,11 +1,14 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 
-import { Context } from './context';
-import { Elements } from './elements';
+import { Context } from './context.js';
 
-export function FocusManager({ children }) {
-  const [elements] = useState(() => new Elements());
+interface Props {
+  children: React.ReactNode
+}
+
+export function FocusManager({ children }: Props) {
+  const [elements] = useState(() => new Set<Element>());
 
   return (
     <Context.Provider value={elements}>

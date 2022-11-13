@@ -1,4 +1,4 @@
-import { ADD_TODO, RANDOMISE_TODOS, REMOVE_TODO, UPDATE_TODO } from './actions';
+import { ADD_TODO, RANDOMISE_TODOS, REMOVE_TODO, REVERSE_TODOS, UPDATE_TODO } from './actions';
 
 export function reducer(state, { type, ...values }) {
   switch (type) {
@@ -12,6 +12,12 @@ export function reducer(state, { type, ...values }) {
       return {
         ...state,
         todos: state.todos.map((t) => [Math.random(), t]).sort().map(([, t]) => t),
+      };
+    }
+    case REVERSE_TODOS: {
+      return {
+        ...state,
+        todos: [...state.todos].reverse(),
       };
     }
     case REMOVE_TODO: {

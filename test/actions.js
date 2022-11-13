@@ -2,6 +2,7 @@ export const ADD_TODO = Symbol('ADD_TODO');
 export const REMOVE_TODO = Symbol('REMOVE_TODO');
 export const UPDATE_TODO = Symbol('UPDATE_TODO');
 export const RANDOMISE_TODOS = Symbol('RANDOMISE_TODOS');
+export const REVERSE_TODOS = Symbol('REVERSE_TODOS');
 
 export function addTodo() {
   return { type: ADD_TODO };
@@ -17,4 +18,8 @@ export function updateTodo(id, values) {
 
 export function randomiseTodos() {
   return { type: RANDOMISE_TODOS };
+}
+
+export function reverseTodos() {
+  return { type: REVERSE_TODOS };
 }

@@ -1,19 +1,20 @@
 import { useCallback, useContext, useRef } from 'react';
-import { Context } from './context';
+import { Context } from './context.js';
+
+import { refocus } from './refocus.js';
 
 export function useManageFocus() {
   const elements = useContext(Context);
-  const lastAddedRef = useRef();
+  const lastAddedRef = useRef<Element>();
 
-  const ref = useCallback((node) => {
+  const ref = useCallback((node: Element) => {
     const { current } = lastAddedRef;
     if (node === null && current) {
       if (current === document.activeElement) {
-        elements.refocus(current);
+        refocus(current, elements);
       }
-      elements.remove(current);
+      elements.delete(current);
     } else if (node) {
-      // Add a new node
       elements.add(node);
     }
     lastAddedRef.current = node;

@@ -22,7 +22,7 @@ export function Todo({ id }) {
   return (
     <>
       <label htmlFor={`title_${id}`}>
-        Title
+        {`Item ${id}`}
         <input
           autoFocus // eslint-disable-line jsx-a11y/no-autofocus
           id={`title_${id}`}
@@ -35,8 +35,16 @@ export function Todo({ id }) {
         type="button"
         onClick={handleRemove}
         ref={ref}
+        aria-label={`Delete with manage focus ${id}`}
       >
-        Delete
+        Delete with manage focus
+      </button>
+      <button
+        type="button"
+        onClick={handleRemove}
+        aria-label={`Delete without manage focus ${id}`}
+      >
+        Delete without manage focus
       </button>
     </>
   );

@@ -1,7 +1,7 @@
 {
   "name": "@citizensadvice/focus-manager",
   "version": "0.0.1",
-  "description": "React component to manage focus",
+  "description": "React component to automatically move focus when a elements are removed or added",
   "type": "module",
   "main": "./dist/index.js",
   "files": [
@@ -10,7 +10,7 @@
   "scripts": {
     "lint": "eslint . --ext .ts --ext .tsx --ext .js --ext .jsx && tsc --noEmit",
     "test": "jest",
-    "start": "parcel ./test/test.html",
+    "start": "parcel ./test/index.html",
     "clean": "rm -rf dist",
     "build": "npm run clean && tsc --declaration --sourceMap --declarationMap --noEmitOnError",
     "build:swc": "npm run clean && swc src --ignore **/*.test.{jsx,js} -d ./dist --source-maps true",
@@ -22,7 +22,9 @@
   "devDependencies": {
     "@swc/cli": "^0.1.57",
     "@swc/jest": "^0.2.23",
+    "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
+    "@testing-library/user-event": "^14.4.3",
     "@typescript-eslint/eslint-plugin": "^5.42.0",
     "@typescript-eslint/parser": "^5.42.0",
     "eslint": "^8.27.0",
@@ -33,6 +35,7 @@
     "eslint-plugin-jsx-a11y": "^6.6.1",
     "eslint-plugin-react": "^7.31.10",
     "eslint-plugin-react-hooks": "^4.6.0",
+    "eslint-plugin-testing-library": "^5.9.1",
     "jest": "^29.2.2",
     "jest-environment-jsdom": "^29.2.2",
     "parcel": "^2.8.0",
@@ -62,7 +65,12 @@
       "import/prefer-default-export": "off",
       "no-continue": "off",
       "no-restricted-syntax": "off",
-      "object-curly-newline": ["error", { "consistent": true }],
+      "object-curly-newline": [
+        "error",
+        {
+          "consistent": true
+        }
+      ],
       "react/forbid-prop-types": "off",
       "react/no-unused-prop-types": "off"
     },
@@ -75,12 +83,13 @@
           "jest": true
         },
         "plugins": [
-          "jest"
+          "jest",
+          "testing-library"
         ],
-        "rules": {
-          "react/jsx-no-bind": "off",
-          "react/jsx-props-no-spreading": "off"
-        }
+        "extends": [
+          "plugin:jest/recommended",
+          "plugin:testing-library/react"
+        ]
       }
     ]
   },
