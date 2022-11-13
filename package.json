@@ -72,9 +72,7 @@
         {
           "consistent": true
         }
-      ],
-      "react/forbid-prop-types": "off",
-      "react/no-unused-prop-types": "off"
+      ]
     },
     "overrides": [
       {
