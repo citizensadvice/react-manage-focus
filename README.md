@@ -20,7 +20,7 @@ When using React with a Redux style this level of focus management can be hard t
 
 ## Usage
 
-The [/test] folder contains a sample "to-do list" application implementing this.
+The [test](/test) folder contains a sample "to-do list" application implementing this.
 
 ### `<FocusManager initialIds={Iterable<Object | string | number | symbol>}>`
 
