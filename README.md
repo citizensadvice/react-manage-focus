@@ -75,7 +75,7 @@ function Item() {
 }
 ```
 
-```
+```js
 function AddButton() {
   const deleteRef = useManageFocus();
 
