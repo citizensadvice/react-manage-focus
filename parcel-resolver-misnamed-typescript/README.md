@@ -8,9 +8,9 @@ Typescript, even when set to transpile to es6 modules, does not correctly set th
 
 If you are compiling a library to be consumed by others, this is a problem.
 
-The workaround is to add `.js` extensions to imports.  Typescript ignores these extensions, but keeps
-them in compiled output.
+The workaround is to add `.js` extensions to your import paths.  Typescript ignores these extensions, but keeps
+them in compiled output. (eg `import 'foo.js';`)
 
 The workaround for using SWC as a typescript compiler is to add `"paths": { "*.js": ["*", "*.js"] }` to the .swcrc file.
 
-The workaround for Parcel is this.  A custom resolver that changes the extension if the file isn't found.
+The workaround for Parcel is this resolver.  A custom resolver that changes the extension if the file isn't found.

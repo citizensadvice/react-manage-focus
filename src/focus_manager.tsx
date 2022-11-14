@@ -1,21 +1,18 @@
-import React, { useMemo, useState } from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 
 import { Context } from './context.js';
-import { useFirstRender } from './use_first_render.js';
 
-interface Props {
-  children: React.ReactNode
+interface IFocusManagerProps {
+  children: React.ReactNode,
+  initialIds?: Iterable<Object | string | number | symbol>
 }
 
-export function FocusManager({ children }: Props) {
-  const [elements] = useState(() => new Set<Element>());
-  const firstRenderRef = useFirstRender();
-
-  const value = useMemo(() => ({
-    elements,
-    firstRenderRef,
-  }), [elements, firstRenderRef]);
+export function FocusManager({ children, initialIds }: IFocusManagerProps) {
+  const [value] = useState(() => ({
+    elements: new Set<HTMLElement>(),
+    initialIds: new Set(initialIds),
+  }));
 
   return (
     <Context.Provider value={value}>
@@ -26,4 +23,14 @@ export function FocusManager({ children }: Props) {
 
 FocusManager.propTypes = {
   children: PropTypes.node.isRequired,
+  initialIds: PropTypes.arrayOf(PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.object,
+    PropTypes.number,
+    PropTypes.symbol,
+  ])),
+};
+
+FocusManager.defaultProps = {
+  initialIds: new Set(),
 };

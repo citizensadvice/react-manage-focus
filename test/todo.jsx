@@ -11,7 +11,7 @@ export function Todo({ id }) {
   const { dispatch, todos } = useContext(Context);
   const { title } = todos.find((t) => t.id === id);
   const ref = useManageFocus();
-  const newRecord = useNewRecord();
+  const newRecord = useNewRecord(id);
 
   const handleRemove = useCallback(() => {
     dispatch(removeTodo(id));

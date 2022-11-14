@@ -1,18 +1,29 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 
+import { FocusManager } from '../src/focus_manager';
+
+import { AddButton } from './add_button';
 import { Context } from './store';
+import { RandomiseButton } from './randomise_button';
+import { ReverseButton } from './reverse_button';
 import { Todo } from './todo';
 
 export function Todos() {
   const { todos } = useContext(Context);
+  const [initialIds] = useState(() => todos.map((t) => t.id));
 
   return (
-    <ul>
-      {todos.map(({ id }) => (
-        <li key={id}>
-          <Todo id={id} />
-        </li>
-      ))}
-    </ul>
+    <FocusManager initialIds={initialIds}>
+      <ul>
+        {todos.map(({ id }) => (
+          <li key={id}>
+            <Todo id={id} />
+          </li>
+        ))}
+      </ul>
+      <AddButton />
+      <RandomiseButton />
+      <ReverseButton />
+    </FocusManager>
   );
 }

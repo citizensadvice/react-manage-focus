@@ -1,10 +1,11 @@
 const { Resolver } = require('@parcel/plugin');
 const path = require('node:path');
-const { access, constants } = require('node:fs/promises');
+const fs = require('node:fs');
+const { access } = require('node:fs/promises');
 
 async function exists(file) {
   try {
-    await access(file, constants.F_OK);
+    await access(file, (fs.constants || fs).F_OK);
   } catch (e) {
     return false;
   }

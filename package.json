@@ -1,7 +1,7 @@
 {
   "name": "@citizensadvice/focus-manager",
   "version": "0.0.1",
-  "description": "React component to automatically move focus when a elements are removed or added",
+  "description": "React component to automatically move focus when elements are removed or added",
   "type": "module",
   "main": "./dist/index.js",
   "files": [
@@ -54,6 +54,7 @@
   "eslintConfig": {
     "extends": [
       "airbnb",
+      "airbnb/hooks",
       "airbnb-typescript"
     ],
     "env": {

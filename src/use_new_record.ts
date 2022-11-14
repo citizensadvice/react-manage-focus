@@ -1,11 +1,9 @@
 import { useContext } from 'react';
 
-import { Context } from './context';
-import { useFirstRender } from './use_first_render.js';
+import { Context } from './context.js';
 
-export function useNewRecord() : boolean {
-  const recordFirstRenderRef = useFirstRender();
-  const { firstRenderRef } = useContext(Context);
+export function useNewRecord(id: Object | string | number | symbol) : boolean {
+  const { initialIds } = useContext(Context);
 
-  return recordFirstRenderRef.current && !firstRenderRef.current;
+  return !initialIds.has(id);
 }

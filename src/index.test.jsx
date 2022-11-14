@@ -9,8 +9,7 @@ describe('when a handled button is removed', () => {
   it('focuses the next available element', async () => {
     render(<App />);
 
-    await userEvent.click(screen.getByRole('button', { name: 'New todo' }));
-    expect(screen.getByRole('textbox', { name: 'Item 1' })).toHaveFocus();
+    expect(document.body).toHaveFocus();
 
     await userEvent.click(screen.getByRole('button', { name: 'New todo' }));
     expect(screen.getByRole('textbox', { name: 'Item 2' })).toHaveFocus();
@@ -32,9 +31,6 @@ describe('when a handled button is removed', () => {
 describe('when the order of handled buttons has changed', () => {
   it('focuses the next available element', async () => {
     render(<App />);
-
-    await userEvent.click(screen.getByRole('button', { name: 'New todo' }));
-    expect(screen.getByRole('textbox', { name: 'Item 1' })).toHaveFocus();
 
     await userEvent.click(screen.getByRole('button', { name: 'New todo' }));
     expect(screen.getByRole('textbox', { name: 'Item 2' })).toHaveFocus();
