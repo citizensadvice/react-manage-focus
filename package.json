@@ -1,5 +1,5 @@
 {
-  "name": "@citizensadvice/focus-manager",
+  "name": "@citizensadvice/react-focus-manager",
   "version": "0.0.1",
   "description": "React component to automatically move focus when elements are removed or added",
   "type": "module",
