@@ -1,5 +1,5 @@
 {
-  "name": "@citizensadvice/focus-manager",
+  "name": "@citizensadvice/react-manage-focus",
   "version": "0.0.1",
   "description": "React component to automatically move focus when elements are removed or added",
   "type": "module",
@@ -90,7 +90,10 @@
         "extends": [
           "plugin:jest/recommended",
           "plugin:testing-library/react"
-        ]
+        ],
+        "rules": {
+          "react/prop-types": "off"
+        }
       }
     ]
   },

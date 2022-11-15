@@ -23,12 +23,15 @@ export function FocusManager({ children, initialIds }: IFocusManagerProps) {
 
 FocusManager.propTypes = {
   children: PropTypes.node.isRequired,
-  initialIds: PropTypes.arrayOf(PropTypes.oneOfType([
-    PropTypes.string,
-    PropTypes.object,
-    PropTypes.number,
-    PropTypes.symbol,
-  ])),
+  initialIds: PropTypes.oneOfType([
+    PropTypes.instanceOf(Set),
+    PropTypes.arrayOf(PropTypes.oneOfType([
+      PropTypes.string,
+      PropTypes.object,
+      PropTypes.number,
+      PropTypes.symbol,
+    ])),
+  ]),
 };
 
 FocusManager.defaultProps = {

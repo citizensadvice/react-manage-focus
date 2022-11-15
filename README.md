@@ -1,6 +1,6 @@
-# `<FocusManager>`
+# react-manage-focus
 
-React component for automatically moving focus when elements are added or deleted.
+React hooks for automatically moving focus when elements are added or deleted.
 
 ## Motivation
 
@@ -75,7 +75,7 @@ function Item() {
 }
 ```
 
-```
+```js
 function AddButton() {
   const deleteRef = useManageFocus();
 
