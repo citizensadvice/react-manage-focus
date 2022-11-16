@@ -1,6 +1,6 @@
 {
   "name": "@citizensadvice/react-manage-focus",
-  "version": "0.0.1",
+  "version": "1.0.0-alpha.1",
   "description": "React component to automatically move focus when elements are removed or added",
   "type": "module",
   "main": "./dist/index.js",
