@@ -1,5 +1,7 @@
 # react-manage-focus
 
+[![npm version](https://badge.fury.io/js/@citizensadvice%2Freact-manage-focus.svg)](https://badge.fury.io/js/@citizensadvice%2Freact-manage-focus)
+
 React hooks for automatically moving focus when elements are added or deleted.
 
 ## Motivation
