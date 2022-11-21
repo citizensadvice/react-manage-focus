@@ -26,4 +26,11 @@ describe('useNewRecord', () => {
     const { result } = renderHook(() => useNewRecord(2), { wrapper: Wrapper });
     expect(result.current).toEqual(true);
   });
+
+  it('returns false for additional renders', () => {
+    const { rerender, result } = renderHook(() => useNewRecord(2), { wrapper: Wrapper });
+    expect(result.current).toEqual(true);
+    rerender();
+    expect(result.current).toEqual(false);
+  });
 });
