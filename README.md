@@ -95,7 +95,7 @@ function AddButton() {
 
 ### `useNewRecord(id: Object | string | number | symbol) : boolean`
 
-This will return if the component should be considered a new record.
+This will return true if the component should be considered a new record.
 
 You can then use this to set the `autoFocus` attribute on a suitable element.
 
