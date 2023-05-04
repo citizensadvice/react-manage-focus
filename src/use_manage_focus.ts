@@ -4,7 +4,7 @@ import { Context } from './context.js';
 import { refocus } from './refocus.js';
 
 export function useManageFocus() {
-  const { elements = new Set<HTMLElement>() } = useContext(Context);
+  const { setFocusElement, elements = new Set<HTMLElement>() } = useContext(Context);
   const lastAddedRef = useRef<HTMLElement>();
 
   const ref = useCallback((node: HTMLElement) => {
@@ -16,14 +16,14 @@ export function useManageFocus() {
     // This is observed in all React versions to date.
     if (node === null && current) {
       if (current === document.activeElement) {
-        refocus(current, elements);
+        setFocusElement?.(refocus(current, elements));
       }
       elements.delete(current);
     } else if (node) {
       elements.add(node);
     }
     lastAddedRef.current = node;
-  }, [elements]);
+  }, [elements, setFocusElement]);
 
   return ref;
 }

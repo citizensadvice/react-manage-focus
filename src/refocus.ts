@@ -23,5 +23,5 @@ export function refocus(target : Element, elements : Set<Element>) {
       break;
     }
   }
-  last?.focus();
+  return last;
 }
