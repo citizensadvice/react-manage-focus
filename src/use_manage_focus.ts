@@ -1,7 +1,7 @@
 import { useCallback, useContext, useRef } from 'react';
 
 import { Context } from './context.js';
-import { refocus } from './refocus.js';
+import { getRefocusElement } from './refocus.js';
 
 export function useManageFocus() {
   const { setFocusElement, elements = new Set<HTMLElement>() } = useContext(Context);
@@ -16,7 +16,7 @@ export function useManageFocus() {
     // This is observed in all React versions to date.
     if (node === null && current) {
       if (current === document.activeElement) {
-        setFocusElement?.(refocus(current, elements));
+        setFocusElement?.(getRefocusElement(current, elements));
       }
       elements.delete(current);
     } else if (node) {

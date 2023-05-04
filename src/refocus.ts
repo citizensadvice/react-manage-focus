@@ -1,6 +1,6 @@
 import { orderByDOM } from './order_by_dom.js';
 
-export function refocus(target : Element, elements : Set<Element>) {
+export function getRefocusElement(target : Element, elements : Set<Element>) {
   if (!elements.has(target)) {
     return;
   }
